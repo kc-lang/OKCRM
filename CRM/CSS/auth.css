@@ -1,0 +1,296 @@
+/* ── auth.css ── partagé entre register.php et login.php ── */
+
+/* Layout global */
+.auth-body {
+    min-height: 100vh;
+    display: flex;
+    background: var(--bg, #f5f6fa);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.auth-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ── Panneau gauche (branding) ── */
+.auth-side {
+    width: 380px;
+    flex-shrink: 0;
+    background: var(--accent, #521f22);
+    background: linear-gradient(145deg, #242843 0%, #6c8afc 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 40px;
+    color: #fff;
+}
+
+.auth-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+}
+.auth-logo span { opacity: 0.65; }
+
+.auth-tagline {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5;
+    opacity: 0.92;
+}
+
+/* Cartes déco */
+.auth-deco {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.deco-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+}
+
+.deco-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.deco-dot.blue   { background: #93c5fd; }
+.deco-dot.green  { background: #86efac; }
+.deco-dot.orange { background: #fcd34d; }
+
+/* ── Panneau droit (formulaire) ── */
+.auth-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+}
+
+.auth-card-head {
+    margin-bottom: 28px;
+}
+
+.auth-card-head h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--ink, #111827);
+    margin-bottom: 6px;
+}
+
+.auth-card-head p {
+    font-size: 14px;
+    color: var(--ink2, #6b7280);
+}
+
+/* Formulaire */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Alerte erreur / succès */
+.auth-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.auth-alert svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+.auth-alert.error {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+.auth-alert.success {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+/* Wrapper input + icône œil */
+.input-eye {
+    position: relative;
+}
+.input-eye input {
+    width: 100%;
+    padding-right: 42px;
+    box-sizing: border-box;
+}
+.eye-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--ink2, #6b7280);
+    display: flex;
+    align-items: center;
+}
+.eye-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Barre de force du mot de passe */
+.pwd-strength {
+    height: 4px;
+    background: var(--border, #e5e7eb);
+    border-radius: 4px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+.pwd-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    transition: width .3s, background .3s;
+}
+.pwd-label {
+    font-size: 11.5px;
+    color: var(--ink2, #6b7280);
+    margin-top: 4px;
+    display: block;
+}
+
+/* Message correspondance MDP */
+.match-msg {
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+.match-msg.ok  { color: #16a34a; }
+.match-msg.err { color: #dc2626; }
+
+/* Erreur JS */
+.f-err {
+    color: #dc2626;
+    font-size: 13px;
+    min-height: 18px;
+}
+
+/* Bouton pleine largeur */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+}
+.btn-full svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Lien bas de page */
+.auth-switch {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--ink2, #6b7280);
+    margin-top: 20px;
+}
+.auth-switch a {
+    color: var(--accent, #4f6ef7);
+    font-weight: 600;
+    text-decoration: none;
+}
+.auth-switch a:hover { text-decoration: underline; }
+
+
+/* ══════════════════════════════════════
+   PATCH à ajouter dans CSS/auth.css
+   Checklist visuelle des règles du mot de passe
+   ══════════════════════════════════════ */
+
+.pwd-rules {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pwd-rules li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    color: var(--ink3, #9494b8);
+    transition: color .2s;
+}
+
+.rule-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border, #e4e4f0);
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color .2s, background .2s;
+}
+
+.pwd-rules li.ok {
+    color: var(--success, #059669);
+}
+.pwd-rules li.ok .rule-dot {
+    background: var(--success, #059669);
+    border-color: var(--success, #059669);
+}
+.pwd-rules li.ok .rule-dot::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3.5px;
+    width: 5px; height: 2.5px;
+    border-left: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: rotate(-45deg);
+}
+
+.pwd-rules li.pending {
+    color: var(--ink3, #9494b8);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .auth-side    { display: none; }
+    .auth-wrapper { justify-content: center; }
+    .auth-main    { padding: 32px 16px; }
+}

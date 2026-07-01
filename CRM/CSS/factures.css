@@ -1,0 +1,5 @@
+/* factures.css */
+.fac-num{font-family:'DM Serif Display',serif;font-size:13px;color:var(--accent)}
+.act.marquer svg{stroke:var(--success)}
+.act.marquer.done{background:var(--success-lt);border-color:var(--success)}
+.act.marquer.done svg{stroke:var(--success)}

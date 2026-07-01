@@ -1,0 +1,38 @@
+/* ══════════════════════════════════════
+   logo.css — composant logo OkCRM
+   À charger une fois dans style.css global,
+   ou inclure ce fichier sur les pages qui n'ont pas style.css
+   ══════════════════════════════════════ */
+
+.okcrm-logo {
+    display: inline-block;
+    font-family: 'DM Serif Display', serif;
+    text-decoration: none;
+    color: var(--ink, #141420);
+    line-height: 1;
+    transition: opacity .15s, transform .15s;
+}
+
+.okcrm-logo span {
+    color: var(--accent, #2563eb);
+}
+
+.okcrm-logo:hover {
+    opacity: .85;
+    transform: translateY(-1px);
+}
+
+/* Quand le logo est sur fond sombre (sidebar) */
+.sidebar .okcrm-logo,
+.dark-bg .okcrm-logo {
+    color: #fff;
+}
+.sidebar .okcrm-logo span,
+.dark-bg .okcrm-logo span {
+    color: #60a5fa;
+}
+
+/* Tailles */
+.okcrm-logo--sm { font-size: 18px; }
+.okcrm-logo--md { font-size: 22px; }
+.okcrm-logo--lg { font-size: 32px; }

@@ -1,0 +1,236 @@
+/* ══════════════════════════════════════
+   profil.css — modal flottant style "nouveau projet"
+   ══════════════════════════════════════ */
+
+.profil-page {
+    background: var(--bg, #f5f5f9);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ── Faux fond dashboard, flouté, décoratif uniquement ── */
+.bg-ghost {
+    position: fixed; inset: 0;
+    display: flex;
+    filter: blur(6px);
+    opacity: .7;
+    pointer-events: none;
+    user-select: none;
+}
+.bg-ghost-sidebar {
+    width: 220px;
+    background: var(--ink, #141420);
+    flex-shrink: 0;
+}
+.bg-ghost-content {
+    flex: 1;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-content: start;
+}
+.bg-ghost-card {
+    height: 90px;
+    border-radius: 12px;
+    background: var(--white, #fff);
+    border: 1px solid var(--border, #e4e4f0);
+}
+.bg-ghost-card.c1 { background: linear-gradient(135deg, #eff4ff, #fff); }
+.bg-ghost-card.c2 { background: linear-gradient(135deg, #d1fae5, #fff); }
+.bg-ghost-card.c3 { background: linear-gradient(135deg, #fef3c7, #fff); }
+.bg-ghost-card.c4 { background: linear-gradient(135deg, #f3e8ff, #fff); }
+.bg-ghost-table {
+    grid-column: 1 / -1;
+    height: 280px;
+    border-radius: 14px;
+    background: var(--white, #fff);
+    border: 1px solid var(--border, #e4e4f0);
+}
+
+/* ── Overlay sombre semi-transparent par-dessus le flou ── */
+.profil-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(20, 20, 32, 0.45);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    z-index: 10;
+    animation: fadeIn .2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Carte modal ── */
+.profil-modal {
+    background: var(--white, #fff);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 460px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px 28px 22px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(20,20,32,.35);
+    animation: popIn .25s cubic-bezier(.2,.8,.3,1.2);
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(.94) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close-x {
+    position: absolute; top: 16px; right: 16px;
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--bg, #f5f5f9); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink2, #4a4a6a); transition: background .15s, color .15s;
+}
+.modal-close-x:hover { background: #fee2e2; color: #dc2626; }
+.modal-close-x svg { width: 16px; height: 16px; }
+
+/* ── Header avatar + infos ── */
+.profil-modal-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 18px;
+}
+
+.avatar-circle {
+    width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent, #2563eb), #60a5fa);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 600; flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37,99,235,.3);
+}
+
+.profil-modal-head h2 { font-size: 17px; font-weight: 600; color: var(--ink, #141420); margin-bottom: 2px; }
+.profil-modal-head p { font-size: 12.5px; color: var(--ink2, #4a4a6a); margin-bottom: 6px; }
+
+.since-badge {
+    display: inline-block;
+    font-size: 10.5px; font-weight: 500;
+    background: var(--accent-lt, #eff4ff); color: var(--accent, #2563eb);
+    padding: 3px 9px; border-radius: 20px;
+}
+
+/* ── Mini stats ── */
+.profil-mini-stats {
+    display: flex; gap: 10px;
+    margin-bottom: 18px;
+}
+.mini-stat {
+    flex: 1;
+    background: var(--bg, #f5f5f9);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+}
+.mini-stat strong { display: block; font-size: 18px; font-weight: 700; color: var(--ink, #141420); }
+.mini-stat span { font-size: 10.5px; color: var(--ink3, #9494b8); text-transform: uppercase; letter-spacing: .4px; }
+
+/* ── Tabs ── */
+.profil-tabs {
+    display: flex; gap: 4px;
+    background: var(--bg, #f5f5f9);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 18px;
+}
+.tab-btn {
+    flex: 1;
+    border: none; background: none; cursor: pointer;
+    font-family: inherit; font-size: 12.5px; font-weight: 500;
+    color: var(--ink3, #9494b8);
+    padding: 8px 10px; border-radius: 7px;
+    transition: all .15s;
+}
+.tab-btn.active {
+    background: var(--white, #fff);
+    color: var(--ink, #141420);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* ── Tab panels ── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn .15s ease; }
+
+.form-group { margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 12px; font-weight: 500; color: var(--ink2, #4a4a6a); }
+.form-group input {
+    border: 1px solid var(--border, #e4e4f0); border-radius: 9px;
+    padding: 10px 13px; font-size: 13px; font-family: inherit;
+    color: var(--ink, #141420); outline: none; transition: border-color .15s, box-shadow .15s;
+}
+.form-group input:focus { border-color: var(--accent, #2563eb); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+
+.btn-profil {
+    width: 100%;
+    background: var(--accent, #2563eb); color: #fff; border: none;
+    border-radius: 9px; padding: 11px 18px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: background .15s, transform .15s;
+    margin-top: 4px;
+}
+.btn-profil:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+/* ── Force mot de passe ── */
+.pwd-strength { height: 4px; background: var(--border, #e4e4f0); border-radius: 4px; margin-top: 6px; overflow: hidden; }
+.pwd-strength-bar { height: 100%; width: 0%; border-radius: 4px; transition: width .2s, background .2s; }
+.pwd-hint { font-size: 11px; color: var(--ink3, #9494b8); margin-top: 4px; }
+
+/* ── Flash messages ── */
+.flash { display: none; padding: 9px 13px; border-radius: 8px; font-size: 12px; margin-bottom: 12px; }
+.flash.show { display: block; }
+.flash.ok  { background: #d1fae5; color: #065f46; }
+.flash.err { background: #fee2e2; color: #991b1b; }
+
+/* ── Bouton retour unique, en bas du modal ── */
+.btn-back-bottom {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    margin-top: 16px;
+    padding: 9px;
+    font-size: 12.5px; font-weight: 500; color: var(--ink3, #9494b8);
+    text-decoration: none; border-radius: 8px;
+    transition: background .15s, color .15s;
+}
+.btn-back-bottom:hover { background: var(--bg, #f5f5f9); color: var(--ink, #141420); }
+.btn-back-bottom svg { width: 14px; height: 14px; }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 600px) {
+    .bg-ghost-sidebar { display: none; }
+    .bg-ghost-content { grid-template-columns: 1fr 1fr; padding: 16px; }
+
+    .profil-modal-overlay { padding: 14px; align-items: flex-end; }
+    .profil-modal {
+        max-width: 100%;
+        border-radius: 18px 18px 0 0;
+        max-height: 92vh;
+        padding: 22px 18px 18px;
+    }
+    .profil-modal-head h2 { font-size: 15.5px; }
+    .avatar-circle { width: 50px; height: 50px; font-size: 19px; }
+}
+
+.logo-upload-zone { display: flex; align-items: center; gap: 14px; }
+.logo-preview {
+    width: 64px; height: 64px; border-radius: 10px;
+    border: 1px dashed var(--border, #e4e4f0);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; background: var(--bg, #f5f5f9);
+    font-size: 10px; color: var(--ink3, #9494b8); text-align: center;
+}
+.logo-preview img { width: 100%; height: 100%; object-fit: contain; }
+.btn-upload-logo {
+    font-size: 12.5px; font-weight: 500; color: var(--accent, #2563eb);
+    border: 1px solid var(--accent, #2563eb); border-radius: 8px;
+    padding: 7px 14px; cursor: pointer; transition: background .15s;
+}
+.btn-upload-logo:hover { background: var(--accent-lt, #eff4ff); }
+.logo-hint { font-size: 11px; color: var(--ink3, #9494b8); }
+
+@media (max-width: 380px) {
+    .profil-modal { padding: 18px 14px 14px; }
+    .profil-tabs { font-size: 11px; }
+}

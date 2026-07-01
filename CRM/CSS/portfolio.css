@@ -1,0 +1,103 @@
+/* ══ portfolio.css — gestion portfolio dans le CRM ══ */
+
+.limit-badge {
+    font-size: 12px; font-weight: 500; color: var(--warn);
+    background: var(--warn-lt); padding: 6px 14px; border-radius: 20px;
+}
+
+/* Compteur */
+.portfolio-counter {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px; font-size: 13px; color: var(--ink2);
+}
+.counter-bar {
+    flex: 1; max-width: 200px; height: 6px;
+    background: var(--border); border-radius: 20px; overflow: hidden;
+}
+.counter-fill { height: 100%; background: var(--accent); border-radius: 20px; transition: width .3s; }
+
+/* Empty state */
+.empty-portfolio {
+    text-align: center; padding: 60px 20px; color: var(--ink3);
+}
+.empty-portfolio svg { width: 48px; height: 48px; stroke: var(--border); fill: none; stroke-width: 1.5; display: block; margin: 0 auto 16px; }
+.empty-portfolio h3 { font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+.empty-portfolio p  { font-size: 14px; margin-bottom: 20px; }
+
+/* Grille cartes */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+}
+.portfolio-card:hover { transform: translateY(-3px); box-shadow: var(--shadow2); }
+
+.portfolio-card-img {
+    position: relative; height: 180px; overflow: hidden;
+    background: var(--bg);
+}
+.portfolio-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.portfolio-card-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+}
+.portfolio-card-placeholder svg { width: 40px; height: 40px; stroke: var(--border); fill: none; stroke-width: 1.5; }
+.portfolio-num {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--accent); color: #fff;
+    font-size: 11px; font-weight: 700;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.portfolio-card-body { padding: 14px 16px; }
+.portfolio-card-body h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.portfolio-desc { font-size: 12.5px; color: var(--ink2); line-height: 1.5; margin-bottom: 10px; }
+.portfolio-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--accent); text-decoration: none; margin-right: 10px;
+}
+.portfolio-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+.portfolio-tel {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--ink3);
+}
+.portfolio-tel svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+.portfolio-card-actions {
+    display: flex; justify-content: flex-end; gap: 8px;
+    padding: 10px 14px; border-top: 1px solid var(--border);
+}
+
+/* Upload photo dans modal */
+.photo-upload-zone { margin-bottom: 16px; text-align: center; }
+.photo-preview {
+    width: 100%; height: 160px; border-radius: 10px;
+    border: 2px dashed var(--border); background: var(--bg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; margin-bottom: 10px; overflow: hidden; cursor: pointer;
+    transition: border-color .15s;
+}
+.photo-preview:hover { border-color: var(--accent); }
+.photo-preview svg { width: 32px; height: 32px; stroke: var(--ink3); fill: none; stroke-width: 1.5; }
+.photo-preview span { font-size: 12px; color: var(--ink3); }
+.photo-preview img  { width: 100%; height: 100%; object-fit: cover; }
+.btn-upload {
+    display: inline-block; font-size: 12.5px; font-weight: 500;
+    color: var(--accent); border: 1px solid var(--accent); border-radius: 8px;
+    padding: 6px 14px; cursor: pointer; transition: background .15s;
+}
+.btn-upload:hover { background: var(--accent-lt); }
+.upload-hint { font-size: 11px; color: var(--ink3); margin-top: 6px; }
+
+@media (max-width: 600px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-counter { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .counter-bar { max-width: 100%; width: 100%; }
+}
